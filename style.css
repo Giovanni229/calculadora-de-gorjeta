@@ -1,55 +1,56 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "space mono",serif;
+    font-family: "Space Mono", serif;
 }
 
-:root{
+:root {
     --green-100: #f3f9fa;
-    --green-200:#c5e4e7;
-    --green-300 :#9ebbbd;
-    --green-400:#7f9d7f;
-    --green-500:#5e7a7d;
-    --green-600:#547878;
-    --green-700:#3d6666;
-    --green-800:#00474b;
-    --light-green:#26c2ae;
-    --white:#ffffff;
-
+    --green-200: #c5e4e7;
+    --green-300: #9EBBBD;
+    --green-400: #7F9D8F;
+    --green-500: #5E7A7D;
+    --green-600: #547878;
+    --green-700: #3D6666;
+    --green-800: #00474B;
+    --light-green: #26C2AE;
+    --white: #FFFFFF;
+    --green-hover: #9FE8DF;
+    --danger: #e17457;
 }
 
-body{
+body  {
     background-color: var(--green-200);
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
     padding-block: 2.8rem;
 }
 
-main{
+main {
     background-color: var(--white);
     padding: 2rem;
-    border-radius: 1.5625rem  1.5625rem 0 0  ;
+    border-radius: 1.5625rem 1.5625rem 0 0;
 }
 
 .conta,
 .gorjeta,
-.pessoas{
+.pessoas {
     margin-bottom: 2rem;
 }
 
 .conta label,
 .gorjeta label,
-.pessoa label{
+.pessoas label {
     color: var(--green-500);
     font-weight: 700;
 }
 
-.cont div,
-.pessoas div{
+.conta div,
+.pessoas .input-box {
     margin-top: 0.4rem;
     background-color: var(--green-100);
     padding: 0.4rem 1.2rem;
@@ -60,7 +61,7 @@ main{
 }
 
 .conta input,
-.pessoas input{
+.pessoas input {
     border: none;
     text-align: right;
     width: 100%;
@@ -72,24 +73,30 @@ main{
 }
 
 .conta input::placeholder,
-.pessoas input::placeholder{
+.pessoas input::placeholder {
     color: var(--green-300);
-
 }
 
 .conta:has(input:focus) div,
-.pessoas:has(input:focus) div{
+.conta:has(input:hover) div,
+.pessoas:has(input:focus) .input-box,
+.pessoas:has(input:hover) .input-box,
+.gorjeta #outra:focus,
+.gorjeta #outra:hover{
     outline: 2px solid var(--light-green);
+    cursor: pointer;
 }
 
-.gorjeta div{
+
+.gorjeta div {
     margin-top: 1rem;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
-.gorjeta input{
+.gorjeta input {
     font-size: 1.5rem;
     font-weight: 700;
     border: none;
@@ -101,55 +108,80 @@ main{
     color: var(--white);
 }
 
-.gorjeta #outra{
-    width: 100%;
-    background-color: var(--green-100);
+.gorjeta .botao-ativo {
+    background-color: var(--light-green);
     color: var(--green-800);
 }
 
-.gorjeta #outra::placeholder{
+.gorjeta input[type="button"]:hover,
+.resultados button:hover {
+    background-color: var(--green-hover);
+    cursor: pointer;
+}
+
+.gorjeta #outra {
+    width: 100%;
+    background-color: var(--green-100);
+    color: var(--green-500);
+}
+
+.gorjeta #outra::placeholder {
     color: var(--green-300);
 }
 
-.pessoas #erro{
-    display: none;
+.pessoas .textos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.resulados{
-    background-color: var(--green-800) ;
-    border-radius: 0.9315rem;
+.pessoas #erro-div {
+    outline: 2px solid var(--danger);
+}
+
+.pessoas #erro {
+   font-size: 0.75rem;
+   color: var(--danger);
+   font-weight: 700;
+   display: none;
+}
+
+.resultados {
+    background-color: var(--green-800);
+    border-radius: 0.9375rem;
     padding: 1.5rem;
 }
 
-.resulados div div{
-    display:flex ;
+.resultados div div{
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.resultados p{
-    color: var(--green-800);
-    font-size: 0.8125;
+
+.resultados p {
+    color: var(--green-400);
+    font-size: 0.8125rem;
 }
 
-.resultados p strong{
+.resultados p strong {
     color: var(--white);
     font-size: 1rem;
 }
 
-.resulados div> strong{
+.resultados div > strong {
     color: var(--light-green);
     font-size: 2rem;
 }
 
-.resultados.gorjeta-total{
-    margin-bottom:1.25rem ;
+.resultados .gorjeta-total {
+    margin-bottom: 1.25rem;
 }
 
-.resultados .total{
-    margin-bottom:2rem;
+.resultados .total {
+    margin-bottom: 2rem;
 }
 
-.resulados button{
+.resultados button {
     width: 100%;
     background: var(--light-green);
     border: none;
@@ -157,52 +189,57 @@ main{
     color: var(--green-800);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     padding-block: 0.5rem;
 }
 
-@media(min-with:920px) {
-    body{
+.conta input::-webkit-inner-spin-button,
+.pessoas input::-webkit-inner-spin-button,
+.gorjeta #outra::-webkit-inner-spin-button {
+    display: none;
+}
+
+@media(min-width: 920px) {
+
+    body {
         display: flex;
         flex-direction: column;
         min-height: 100svh;
         justify-content: center;
-        gap:5rem;
+        gap: 5rem;
     }
 
     header{
         padding: 0;
     }
 
-    main{
-        display:flex;
+    main {
+        display: flex;
         gap: 3rem;
         padding: 3rem;
         border-radius: 1.5625rem;
         max-width: 57.5rem;
         margin-inline: auto;
     }
-    main section{
-        width:100%;
+
+    main section {
+        width: 100%;
     }
 
-    .conta input::-webkit-inner-spin-button,
-    .pessoas input::-webkit-inner-spin-button{
-        display: none;
-    }
 
-    .gorjeta div{
+    .gorjeta div {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .resultads{
+    .resultados {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         padding: 2.5rem;
     }
 
-    .resulados div > strong{
+    .resultados div > strong {
         font-size: 3rem;
     }
 }
