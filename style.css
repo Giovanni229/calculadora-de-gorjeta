@@ -111,5 +111,6 @@ main{
 
 .pessoas #erro{
     display: none;
+    display: block;
 }
 
